@@ -1,4 +1,7 @@
 # https://rstudio.github.io/DT/010-style.html
+# 1. selection
+# 2. highlights
+# 3. row height
 
 library(shiny)
 shinyApp(
@@ -14,7 +17,10 @@ shinyApp(
         # selection = 'single',
         selection = list(target = 'row', selected = c(1, 3))
       ) %>% 
-        formatStyle('Species', backgroundColor = styleEqual('setosa', 'red'))
+        formatStyle(
+          'Species', 
+          backgroundColor = styleEqual('setosa', 'red'),
+          lineHeight='30%')
       return(dat)
     })
   }
