@@ -4,15 +4,22 @@ datatable(
   cbind(' ' = '&oplus;', mtcars), escape = -2,
   options = list(
     columnDefs = list(
-      list(visible = FALSE, targets = c(0, 2, 3)),
-      list(orderable = FALSE, className = 'details-control', targets = 1)
+      list(
+        visible = FALSE, 
+        targets = c(0, 2, 3)
+      ),
+      list(
+        orderable = FALSE, 
+        className = 'details-control', 
+        targets = 1
+      )
     )
   ),
   callback = JS("
   table.column(1).nodes().to$().css({cursor: 'pointer'});
   var format = function(d) {
-    return '<div style=\"background-color:#eee; padding: .5em;\"> Model: ' +
-            d[0] + ', mpg: ' + d[2] + ', cyl: ' + d[3] + '</div>';
+    return '<div style=\"background-color:#eee; padding: .5em;\"> 
+            Model: ' + d[0] + ', mpg: ' + d[2] + ', cyl: ' + d[3] + '</div>';
   };
   table.on('click', 'td.details-control', function() {
     var td = $(this), row = table.row(td.closest('tr'));
